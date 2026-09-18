@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08080d"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.svg"><title>VYNZOYA IRL</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07070b;color:#f7f7fb;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.app{max-width:760px;margin:auto;padding:16px 14px 36px}body:before{content:"";position:fixed;inset:-20%;z-index:-1;background:radial-gradient(circle at 20% 15%,#8b5cff22,transparent 25%),radial-gradient(circle at 85% 10%,#00d9ff15,transparent 23%),radial-gradient(circle at 50% 90%,#ff2e8a12,transparent 30%)}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.logo{font-weight:900;letter-spacing:.12em}.logo span{color:#9b68ff}.counter{padding:8px 12px;border:1px solid #ffffff18;background:#ffffff09;border-radius:99px;font-size:12px;color:#aaa}.hero,.card{border:1px solid #ffffff12;background:#111119e8;border-radius:24px;box-shadow:0 18px 55px #0008}.hero{padding:22px 18px;margin-bottom:13px}.eyebrow{font-size:10px;letter-spacing:.18em;color:#a477ff;font-weight:900}.hero h1{font-size:clamp(30px,8vw,52px);line-height:.98;margin:9px 0}.hero p{margin:0;color:#a8a8b7;line-height:1.5}.controls{display:flex;gap:9px;margin:13px 0}.btn{flex:1;border:1px solid #ffffff14;border-radius:15px;padding:14px 10px;color:#fff;font-weight:900;cursor:pointer;background:#181820}.primary{background:linear-gradient(135deg,#8c50ff,#602dff)}.done{background:linear-gradient(135deg,#19bd7b,#087d55)}.ideaHead{padding:20px 18px 14px}.tag{display:inline-block;padding:6px 9px;border-radius:99px;border:1px solid #9b68ff38;background:#9b68ff15;color:#bea7ff;font-size:10px;font-weight:900}.idea{font-size:25px;font-weight:900;line-height:1.15;margin:12px 0 5px}.hook{color:#8f8f9f;font-size:13px}.grid{display:grid;grid-template-columns:1fr;gap:1px;background:#ffffff0b;border-top:1px solid #ffffff0b}.box{padding:16px 18px;background:#111119}.label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#858594;font-weight:900;margin-bottom:7px}.value{font-size:14px;line-height:1.5}.purple{color:#ae8cff}.history{margin-top:15px;color:#aaa; font-size:13px}.history summary{cursor:pointer}.historyList{display:grid;gap:8px;margin-top:10px}.item{padding:11px;border-radius:12px;background:#ffffff06;border:1px solid #ffffff0d}.item b{display:block;color:#eee;margin-bottom:3px}.item small{color:#777}@media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="app">
+<div class="top"><div class="logo">VYNZOYA <span>IRL</span></div><div class="counter">DONE <b id="count">0</b></div></div>
+<section class="hero"><div class="eyebrow">CRAZY IRL IDEA ENGINE</div><h1>Never run out of content.</h1><p>Unlimited random IRL concepts with high-CTR-style title, description, tags and hashtags.</p></section>
+<div class="controls"><button class="btn primary" onclick="newIdea()">⚡ NEW CRAZY IDEA</button><button class="btn done" onclick="done()">✓ DONE</button></div>
+<main class="card"><div class="ideaHead"><span class="tag" id="cat"></span><div class="idea" id="idea"></div><div class="hook" id="hook"></div></div>
+<div class="grid"><div class="box"><div class="label">High-CTR Title</div><div class="value" id="title"></div></div><div class="box"><div class="label">Description</div><div class="value" id="desc"></div></div><div class="box"><div class="label">Tags</div><div class="value" id="tags"></div></div><div class="box"><div class="label">Hashtags</div><div class="value purple" id="hashtags"></div></div></div></main>
+<details class="history"><summary>📋 Completed ideas — <span id="hc">0</span></summary><div class="historyList" id="history"></div></details>
+</div><script>
+const places=["Chandigarh","Mohali","Kharar","Kurali","a random mall","a busy market","a huge park","a food street","a random neighborhood"];
+const twists=["with only ₹100","letting strangers decide every move","until the battery reaches 1%","for 12 hours","using viewer suggestions","with a mystery wheel","without knowing the next location","until 20 missions are complete"];
+const missions=["let strangers choose your entire route","turn ₹100 into a full day of adventures","ask 50 strangers one chaotic question","complete 10 random missions","find the weirdest hidden spot","let the chat control every decision","start with nothing and build an adventure","follow every third suggestion from viewers","try to complete a ridiculous street challenge"];
+const cats=["CHAOS IRL","CHAT CONTROLLED","STREET CHALLENGE","24H CONCEPT","SOCIAL EXPERIMENT","RANDOM ADVENTURE"];
+const hooks=["One decision can change the entire stream.","The chat controls what happens next.","There is no fixed plan after the first 5 minutes.","Every mission unlocks the next one.","It sounds simple… until you actually try it."];
+let current;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function make(){let p=pick(places),t=pick(twists),m=pick(missions),c=pick(cats),h=pick(hooks);
+let idea=`${m} in ${p} ${t}.`;
+let title=pick([`I Let STRANGERS Control My Entire Day in ${p} 😭`,`I Started With ₹100… Let's See Where This Goes`,`The Chat Controls My Life ${t} 😭`,`I Have NO PLAN — ${m.toUpperCase()} LIVE`,`I Tried the CRAZIEST IRL Challenge in ${p}`,`Whatever Happens Next… I HAVE TO DO IT 😭`]);
+return {idea,title,cat:c,hook:h,desc:`Today I'm taking this IRL challenge to the streets. ${idea} Viewers can influence what happens next, so the plan can change at any moment. Real reactions, unexpected moments and pure chaos — all live.`,tags:`IRL streaming, ${p}, live challenge, street challenge, random challenge, chat controlled stream, Indian IRL streamer, live entertainment`,hashtags:`#IRL #LiveStream #IndianStreamer #VYNZOYA #IRLChallenge #Live #Streamer #Chaos`}}
+function render(x){current=x;cat.textContent=x.cat;idea.textContent=x.idea;title.textContent=x.title;hook.textContent=x.hook;desc.textContent=x.desc;tags.textContent=x.tags;hashtags.textContent=x.hashtags}
+function newIdea(){render(make())}
+function get(){return JSON.parse(localStorage.getItem("vynzoya_done")||"[]")}
+function done(){if(!current)return;let h=get();h.push({...current,at:new Date().toLocaleString()});localStorage.setItem("vynzoya_done",JSON.stringify(h));update();newIdea()}
+function signature(x){return (x.idea+"|"+x.title).toLowerCase().replace(/[^a-z0-9₹]+/g," ").trim()}
+function getUsed(){try{return JSON.parse(localStorage.getItem("vynzoya_used")||"[]")}catch{return[]}}
+function saveUsed(a){localStorage.setItem("vynzoya_used",JSON.stringify(a))}
+function newIdea(){let used=new Set(getUsed()),x,tries=0;do{x=make();tries++}while(used.has(signature(x))&&tries<1000);used.add(signature(x));saveUsed([...used]);render(x)}
+function esc(s){return String(s).replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[x]))}
+function update(){let h=get();count.textContent=h.length;hc.textContent=h.length;history.innerHTML=h.slice().reverse().map(x=>`<div class="item"><b>✓ ${esc(x.idea)}</b><small>${esc(x.at)}</small></div>`).join("")}
+update();newIdea();
+if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{});}
+</script></body></html>
